@@ -6,7 +6,7 @@ import * as RiIcons from 'react-icons/ri';
 const sidebarData = [
   {
     title: 'Overview',
-    path: '/overview',
+    // path: '/overview',
     icon: <AiIcons.AiFillHome />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
@@ -25,13 +25,13 @@ const sidebarData = [
   },
   {
     title: 'Reports',
-    path: '/reports',
+    // path: '/reports',
     icon: <IoIcons.IoIosPaper />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
     subNav: [
       {
-        title: 'Reports',
+        title: 'Reports1',
         path: '/reports/reports1',
         icon: <IoIcons.IoIosPaper />,
         cName: 'sub-nav',
@@ -61,7 +61,7 @@ const sidebarData = [
   },
   {
     title: 'Messages',
-    path: '/messages',
+    // path: '/messages',
     icon: <FaIcons.FaEnvelopeOpenText />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
