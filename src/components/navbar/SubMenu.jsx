@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -21,12 +22,23 @@ const SidebarLabel = styled.span`
 `;
 
 const SubMenu = ({ item }) => {
+  const [subNav, setSubNav] = useState(false);
+
+  const showSubNav = () => setSubNav(!subNav);
+
   return (
     <>
-      <SidebarLink to={item.path}>
+      <SidebarLink to={item.path} onClick={item.subNav && showSubNav}>
         <div>
           {item.icon}
           <SidebarLabel>{item.title}</SidebarLabel>
+        </div>
+        <div>
+          {item.subNav && subNav
+            ? item.iconOpened
+            : item.subNav
+            ? item.iconClosed
+            : null}
         </div>
       </SidebarLink>
     </>
