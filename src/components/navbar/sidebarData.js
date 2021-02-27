@@ -1,7 +1,7 @@
-import * as FaIcons from 'react-icon/fa';
-import * as AiIcons from 'react-icon/ai';
-import * as IoIcons from 'react-icon/io';
-import * as RiIcons from 'react-icon/ri';
+import * as FaIcons from 'react-icons/fa';
+import * as AiIcons from 'react-icons/ai';
+import * as IoIcons from 'react-icons/io';
+import * as RiIcons from 'react-icons/ri';
 
 const sidebarData = [
   {
