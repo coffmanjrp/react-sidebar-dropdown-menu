@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FaBars } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
-import { sidebarData } from './';
+import { sidebarData, SubMenu } from './';
 
 const Nav = styled.div`
   display: flex;
@@ -55,6 +55,9 @@ const Sidebar = () => {
           <NavIcon to="#!" onClick={showSidebar}>
             <AiOutlineClose />
           </NavIcon>
+          {sidebarData.map((item, index) => (
+            <SubMenu key={index} item={item} />
+          ))}
         </SidebarWrap>
       </SidebarNav>
     </>
