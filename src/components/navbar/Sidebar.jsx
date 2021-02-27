@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { IconContext } from 'react-icons/lib';
@@ -41,27 +41,44 @@ const SidebarWrap = styled.div`
 
 const Sidebar = () => {
   const [sidebar, setSidebar] = useState(false);
+  const ref = useRef();
 
   const showSidebar = () => setSidebar(!sidebar);
+
+  const handleClick = (e) => {
+    if (!ref.current.contains(e.target)) {
+      setSidebar(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', handleClick);
+
+    return () => {
+      document.removeEventListener('click', handleClick);
+    };
+  }, []);
 
   return (
     <>
       <IconContext.Provider value={{ color: '#fff' }}>
-        <Nav>
-          <NavIcon to="#!" onClick={showSidebar}>
-            <FaBars />
-          </NavIcon>
-        </Nav>
-        <SidebarNav sidebar={sidebar}>
-          <SidebarWrap>
+        <div ref={ref}>
+          <Nav>
             <NavIcon to="#!" onClick={showSidebar}>
-              <AiOutlineClose />
+              <FaBars />
             </NavIcon>
-            {sidebarData.map((item, index) => (
-              <SubMenu key={index} item={item} />
-            ))}
-          </SidebarWrap>
-        </SidebarNav>
+          </Nav>
+          <SidebarNav sidebar={sidebar}>
+            <SidebarWrap>
+              <NavIcon to="#!" onClick={showSidebar}>
+                <AiOutlineClose />
+              </NavIcon>
+              {sidebarData.map((item, index) => (
+                <SubMenu key={index} item={item} />
+              ))}
+            </SidebarWrap>
+          </SidebarNav>
+        </div>
       </IconContext.Provider>
     </>
   );
