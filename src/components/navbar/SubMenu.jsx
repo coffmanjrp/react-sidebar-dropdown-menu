@@ -21,6 +21,20 @@ const SidebarLabel = styled.span`
   margin-left: 1rem;
 `;
 
+const DropdownLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  padding-left: 3rem;
+  height: 60px;
+  background-color: #414757;
+  font-size: 0.9375rem;
+  color: #f5f5f5;
+  cursor: pointer;
+  &:hover {
+    background-color: #632ce4;
+  }
+`;
+
 const SubMenu = ({ item }) => {
   const [subNav, setSubNav] = useState(false);
 
@@ -41,6 +55,13 @@ const SubMenu = ({ item }) => {
             : null}
         </div>
       </SidebarLink>
+      {subNav &&
+        item.subNav.map((item, index) => (
+          <DropdownLink key={index} to={item.path}>
+            {item.icon}
+            <SidebarLabel>{item.title}</SidebarLabel>
+          </DropdownLink>
+        ))}
     </>
   );
 };

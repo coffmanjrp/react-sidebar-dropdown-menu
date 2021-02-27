@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { IconContext } from 'react-icons/lib';
 import { FaBars } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
 import { sidebarData, SubMenu } from './';
@@ -45,21 +46,23 @@ const Sidebar = () => {
 
   return (
     <>
-      <Nav>
-        <NavIcon to="#!" onClick={showSidebar}>
-          <FaBars />
-        </NavIcon>
-      </Nav>
-      <SidebarNav sidebar={sidebar}>
-        <SidebarWrap>
+      <IconContext.Provider value={{ color: '#fff' }}>
+        <Nav>
           <NavIcon to="#!" onClick={showSidebar}>
-            <AiOutlineClose />
+            <FaBars />
           </NavIcon>
-          {sidebarData.map((item, index) => (
-            <SubMenu key={index} item={item} />
-          ))}
-        </SidebarWrap>
-      </SidebarNav>
+        </Nav>
+        <SidebarNav sidebar={sidebar}>
+          <SidebarWrap>
+            <NavIcon to="#!" onClick={showSidebar}>
+              <AiOutlineClose />
+            </NavIcon>
+            {sidebarData.map((item, index) => (
+              <SubMenu key={index} item={item} />
+            ))}
+          </SidebarWrap>
+        </SidebarNav>
+      </IconContext.Provider>
     </>
   );
 };
