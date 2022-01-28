@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { IconContext } from 'react-icons/lib';
@@ -41,28 +41,13 @@ const SidebarWrap = styled.div`
 
 const Sidebar = () => {
   const [sidebar, setSidebar] = useState(false);
-  const ref = useRef();
 
   const showSidebar = () => setSidebar(!sidebar);
-
-  const handleClick = (e) => {
-    if (!ref.current.contains(e.target)) {
-      setSidebar(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('click', handleClick);
-
-    return () => {
-      document.removeEventListener('click', handleClick);
-    };
-  }, []);
 
   return (
     <>
       <IconContext.Provider value={{ color: '#fff' }}>
-        <div ref={ref}>
+        <div>
           <Nav>
             <NavIcon to="#!" onClick={showSidebar}>
               <FaBars />
